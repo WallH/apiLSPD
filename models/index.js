@@ -7,5 +7,6 @@ db.mongoose = mongoose;
 db.url = mongoURL;
 db.rango = require("./rango.model")(mongoose);
 db.usuario = require("./usuario.model")(mongoose);
+db.valoracionoficial = require("./valoracionoficial.model")(mongoose);
 //db.tokenlogin = require("./tokenlogin.model")(mongoose);
 module.exports = db;

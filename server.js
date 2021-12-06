@@ -30,10 +30,13 @@ app.get("/", async(req, res) =>
     res.send({alive: true});
 });
 
+app.use(bodyParser.json({limit:'50mb'}));
 app.use(cookieParser());
 
 
 require("./routes/usuario.routes")(app);
+require("./routes/valoracionoficial.routes")(app);
+require("./routes/auth.routes")(app);
 const PORT = 8081;
 app.listen(PORT, () => {
   console.log("API LSPD PORT "+PORT+".");

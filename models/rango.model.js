@@ -1,7 +1,7 @@
 const { Schema } = require("mongoose");
 module.exports = mongoose => {
     const Rango = mongoose.model(
-        "alumno",
+        "rango",
         mongoose.Schema(
             {
                 nombre: {type:String, required: true},
