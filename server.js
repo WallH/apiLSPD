@@ -33,7 +33,7 @@ app.get("/", async(req, res) =>
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(cookieParser());
 
-
+require("./routes/rango.routes")(app);
 require("./routes/usuario.routes")(app);
 require("./routes/valoracionoficial.routes")(app);
 require("./routes/auth.routes")(app);

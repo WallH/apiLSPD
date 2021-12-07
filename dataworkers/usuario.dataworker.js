@@ -18,7 +18,10 @@ exports.existsNombreUsuario = async(nombre_usuario)=>
 
 exports.getByID = async(id)=>
 {
-    return await UsuarioRepository.findById(id);
+    return await UsuarioRepository.findById(id).populate({
+        path:'rango',
+        model: RangoRepository
+    });
 }
 
 exports.getAll = async()=>
