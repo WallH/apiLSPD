@@ -1,14 +1,15 @@
 const { Schema } = require("mongoose");
+
 module.exports = mongoose => {
-    const Rango = mongoose.model(
-        "rango",
+    const Accion = mongoose.model(
+        "accion",
         mongoose.Schema(
             {
                 nombre: {type:String, required: true},
-                poder: {type: Number, required: true},
+                descripcion: {type: Number, required: true},
             }
         )
     );
 
-    return Rango;
+    return Accion;
 };

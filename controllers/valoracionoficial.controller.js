@@ -5,7 +5,7 @@ exports.getMy = async(req, res)=>{
     const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
     const filter = 
     {
-        alumno: userLoggedIn.alumno
+        encargado: userLoggedIn
     };
     res.send({response: await ValoracionOficialDataWorker.getByFilter(filter)});
 }
@@ -31,12 +31,16 @@ exports.getByFilter = async(req, res)=>
 
 exports.post = async(req, res)=>
 {
+    const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
+    req.body.encargado = userLoggedIn;
     let x= await ValoracionOficialDataWorker.newValoracionOficial(req.body);
     res.send({response: x});
 }
 
 exports.put = async(req, res)=>
 {
+    const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
+    req.body.encargado = userLoggedIn;
     let x = await ValoracionOficialDataWorker.update(req.params.id, req.body);
     res.send({response: x});
 }

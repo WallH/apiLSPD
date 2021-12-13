@@ -7,8 +7,9 @@ module.exports = mongoose => {
                 oficial: {type:Schema.Types.ObjectId, required: true},
                 encargado: {type:Schema.Types.ObjectId, required: true},
                 puntuacion: {type:Number, required: true},
-                observacion: {type:String, required:true},
-                fecha_avance: {type:Date, required: true} 
+                puntuacionDetalle: {type:String, required:true},
+                observacion: {type:String, required:false},
+                fecha: {type:Date, required: true} 
             }
         )
     );
