@@ -1,14 +1,14 @@
 const { Schema } = require("mongoose");
 module.exports = mongoose => {
-    const Permisos = mongoose.model(
-        "permisos",
+    const PermisosEndpoint = mongoose.model(
+        "permisosendpoint",
         mongoose.Schema(
             {
-                rango: {type:Schema.Types.ObjectId, required: true},
+                endpoint: {type:String, required: true},
                 acciones: [{type: Schema.Types.ObjectId, ref:'accion',required: true}],
             }
         )
     );
 
-    return Permisos;
+    return PermisosEndpoint;
 };

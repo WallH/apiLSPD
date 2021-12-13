@@ -7,6 +7,7 @@ db.mongoose = mongoose;
 db.url = mongoURL;
 db.accion = require("./accion.model")(mongoose);
 db.permisos = require("./permisos.model")(mongoose);
+db.permisosendpoint = require("./permisosendpoint.model")(mongoose);
 db.rango = require("./rango.model")(mongoose);
 db.usuario = require("./usuario.model")(mongoose);
 db.valoracionoficial = require("./valoracionoficial.model")(mongoose);

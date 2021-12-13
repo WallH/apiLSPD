@@ -1,6 +1,8 @@
 const UsuarioDataWorker = require("../dataworkers/usuario.dataworker");
 
+const PermissionMiddleware = require("../middlewares/permisos.middleware");
 exports.getAll = async(req, res)=>{
+    //PermissionMiddleware.comprobarPermisosNecesarios(req.cookies.token, "usuario");
     res.send({response: await UsuarioDataWorker.getAll()});
 }
 
