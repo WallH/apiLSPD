@@ -59,6 +59,7 @@ exports.deleteUsuario = async(id)=>
 exports.update = async(id, data)=>
 {
     delete data["_id"];
+    if(data.clave?.trim() == "") delete data["clave"];
     if(data.clave !== undefined) data.clave = encryptPassword(data.clave);
     const ret = await UsuarioRepository.findByIdAndUpdate(id, {...data});
     return ret;
