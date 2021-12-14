@@ -16,6 +16,6 @@ exports.comprobarPermisosNecesarios = async(token, endpoint)=>
             $all: needed.acciones
         }
     });
-    console.log(havePermission);
+    //console.log(havePermission);
     return havePermission != null;
 }

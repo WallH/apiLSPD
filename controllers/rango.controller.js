@@ -1,4 +1,5 @@
 const RangoDataWorker = require("../dataworkers/rango.dataworker");
+const PermisosDataWorker = require("../dataworkers/permisos.dataworker");
 const TokenDataWorker = require("../dataworkers/tokenlogin.dataworker");
 
 exports.getMy = async(req, res)=>{
@@ -32,6 +33,7 @@ exports.getByFilter = async(req, res)=>
 exports.post = async(req, res)=>
 {
     let x= await RangoDataWorker.newRango(req.body);
+    let permiso = await PermisosDataWorker.newPermisos({ "rango": x, "acciones": []});
     res.send({response: x});
 }
 

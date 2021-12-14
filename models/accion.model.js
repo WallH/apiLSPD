@@ -6,7 +6,7 @@ module.exports = mongoose => {
         mongoose.Schema(
             {
                 nombre: {type:String, required: true},
-                descripcion: {type: Number, required: true},
+                descripcion: {type: String, required: true},
             }
         )
     );

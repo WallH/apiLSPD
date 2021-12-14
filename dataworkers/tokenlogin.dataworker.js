@@ -1,10 +1,10 @@
+const { permisos } = require("../models");
 const db = require("../models");
 const TokenRepository = db.tokenlogin;
 const UserRepository = db.usuario;
-const AlumnoReposity = db.alumno;
-const DietaRepository = db.dieta;
-const RutinaRepository = db.rutina;
-
+const RangoRepository = db.rango;
+const PermisosRepository = db.permisos;
+const AccionesRepository = db.accion;
 exports.getUserByToken = async(token)=>
 {
     const result = (await TokenRepository.find(
@@ -14,7 +14,14 @@ exports.getUserByToken = async(token)=>
     ).populate({
         path:'usuario',
         model: UserRepository,
+        populate: [
+            {
+                path: 'rango',
+                model: RangoRepository,
+            }
+        ]
     }))[0] ?? null;
+
     return result.usuario;
 }
 
