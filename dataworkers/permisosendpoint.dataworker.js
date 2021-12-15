@@ -13,7 +13,7 @@ exports.comprobarPermisosNecesarios = async(token, endpoint)=>
     {
         "rango": userLoggedIn.rango._id,
         "acciones": {
-            $all: needed?.acciones ?? []
+            $all: needed?.acciones || []
         }
     });
     //console.log(havePermission);
