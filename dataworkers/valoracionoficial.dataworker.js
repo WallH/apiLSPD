@@ -58,7 +58,6 @@ exports.newValoracionOficial = async(data)=>
             ...data
         }
     )
-    console.log(ret);
     return await ret.save();
 }
 

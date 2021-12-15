@@ -39,14 +39,12 @@ exports.getByFilter = async(filter)=>
 
 exports.newUsuario = async(data)=>
 {
-    console.log(data.clave);
     data.clave = encryptPassword(data.clave);
     const ret = new UsuarioRepository(
         {
             ...data
         }
     )
-    console.log(ret);
     return await ret.save();
 }
 

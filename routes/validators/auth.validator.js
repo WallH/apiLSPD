@@ -2,7 +2,6 @@ const { body, check, query, param } = require('express-validator');
 
 const tryLoginValidation = () =>
 {
-    console.log("ASDASDASDASdas");
     return [
         body('usuario').exists().withMessage("El nombre de usuario es requerido.").bail()
         .notEmpty().withMessage("El usuario no puede ser un campo vacío.").bail()
