@@ -9,13 +9,16 @@ exports.comprobarPermisosNecesarios = async(token, endpoint)=>
     const needed = await PermisosEndpointRepository.findOne({
         endpoint: endpoint
     });
+    let checkerActions = needed?.acciones || [];
+    if(needed == null) return true;
     const havePermission = await PermisosRepository.findOne(
     {
         "rango": userLoggedIn.rango._id,
         "acciones": {
-            $all: needed?.acciones || []
+            $all: needed?.acciones
         }
     });
+    console.log(havePermission);
     //console.log(havePermission);
     return havePermission != null;
 }
