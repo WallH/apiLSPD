@@ -34,6 +34,7 @@ app.use(bodyParser.json({limit:'50mb'}));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
+require("./routes/my.routes")(app);
 require("./routes/permisos.routes")(app);
 require("./routes/acciones.routes")(app);
 require("./routes/rango.routes")(app);
