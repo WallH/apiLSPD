@@ -1,6 +1,6 @@
 const ValoracionOficialDataWorker = require("../dataworkers/valoracionoficial.dataworker");
 const TokenDataWorker = require("../dataworkers/tokenlogin.dataworker");
-
+const UsuarioDataWorker = require("../dataworkers/usuario.dataworker");
 exports.getMy = async(req, res)=>{
     const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
     const filter = 
@@ -33,7 +33,18 @@ exports.post = async(req, res)=>
 {
     const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
     req.body.encargado = userLoggedIn;
-    let x= await ValoracionOficialDataWorker.newValoracionOficial(req.body);
+    let officerEvaluated = (await UsuarioDataWorker.getByID(req.body.oficial?._id));
+    if(officerEvaluated == null) 
+    {
+        res.status(400).send({error: "Oficial no existente"});
+        return ;
+    }
+    if(officerEvaluated.rango.poder > userLoggedIn.rango.poder)
+    {
+        res.status(401).send({error: "No tienes permisos suficientes."})
+        return ;
+    }
+    let x = await ValoracionOficialDataWorker.newValoracionOficial(req.body);
     res.send({response: x});
 }
 
