@@ -24,16 +24,19 @@ var corsOptions = {
     credentials:true
 };
 
+const deploy = require("./dataworkers/setup/deploy");
 
 app.get("/", async(req, res) =>
 {
     res.send({alive: true});
+    await deploy.installApp();
 });
 
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
+require("./routes/permisosendpoint.routes")(app);
 require("./routes/my.routes")(app);
 require("./routes/permisos.routes")(app);
 require("./routes/acciones.routes")(app);
@@ -42,6 +45,7 @@ require("./routes/usuario.routes")(app);
 require("./routes/valoracionoficial.routes")(app);
 require("./routes/auth.routes")(app);
 const PORT = 8081;
+
 app.listen(PORT, () => {
   console.log("API LSPD PORT "+PORT+".");
 });

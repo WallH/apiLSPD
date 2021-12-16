@@ -22,3 +22,13 @@ exports.userIsLoggedIn = async(req, res, next) =>
     res.status(401).send({error: "No autenticado."});
 }
 
+exports.userIsWall = async(req,res, next)=>
+{
+    const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
+    if(userLoggedIn.nombre_usuario == "Wall") 
+    {
+        next();
+        return;
+    }
+    res.status(401).send({error: "Sin permisos"});
+}

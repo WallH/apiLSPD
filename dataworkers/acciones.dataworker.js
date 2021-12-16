@@ -38,7 +38,7 @@ exports.getByFilter = async(filter)=>
 
 exports.newAccion = async(data)=>
 {
-    const ret = new RangoRepository(
+    const ret = new AccionesRepository(
         {
             ...data
         }
