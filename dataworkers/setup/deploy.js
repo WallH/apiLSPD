@@ -29,6 +29,97 @@ exports.installApp = async()=>
     const Chief = await RangoDataWorker.newRango({"nombre": "Jefe", "poder": 14});
 
 
+    await PermisosDataWorker.newPermisos({
+        rango:cadete,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:oficialI,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:oficialII,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:oficialIII,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:oficialLider,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:detectiveI,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:detectiveII,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:detectiveIII,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:SGTPrimero,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:SGTSegundo,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:TNTPrimero,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:TNTSegundo,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:CPTPrimero,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:CPTSegundo,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:CPTTercero,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:Commander,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:AsstChief,
+        acciones: []
+    });
+
+    await PermisosDataWorker.newPermisos({
+        rango:Chief,
+        acciones: []
+    });
+
+
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"accion.obtener", acciones: []});
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"accion.obtener.id", acciones: []});
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"accion.buscar", acciones: []});
