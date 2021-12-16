@@ -114,10 +114,7 @@ exports.installApp = async()=>
         acciones: []
     });
 
-    await PermisosDataWorker.newPermisos({
-        rango:Chief,
-        acciones: []
-    });
+
 
 
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"accion.obtener", acciones: []});
@@ -151,37 +148,44 @@ exports.installApp = async()=>
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"permiso.editar", acciones: []});
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"permiso.eliminar", acciones: []});
 
+    let allActions = [];
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"accion.eliminar", descripcion:"Permitirá eliminar acciones." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"permiso.eliminar", descripcion:"Permitirá eliminar permisos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"rango.eliminar", descripcion:"Permitirá eliminar rangos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"usuario.eliminar", descripcion:"Permitirá eliminar usuarios." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"ficha.eliminar", descripcion:"Permitirá eliminar fichas." }));
 
-    await AccionesDataWorker.newAccion({nombre:"accion.eliminar", descripcion:"Permitirá eliminar acciones." });
-    await AccionesDataWorker.newAccion({nombre:"permiso.eliminar", descripcion:"Permitirá eliminar permisos." });
-    await AccionesDataWorker.newAccion({nombre:"rango.eliminar", descripcion:"Permitirá eliminar rangos." });
-    await AccionesDataWorker.newAccion({nombre:"usuario.eliminar", descripcion:"Permitirá eliminar usuarios." });
-    await AccionesDataWorker.newAccion({nombre:"ficha.eliminar", descripcion:"Permitirá eliminar fichas." });
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"accion.nuevo", descripcion:"Permitirá crear acciones." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"permiso.nuevo", descripcion:"Permitirá crear permisos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"rango.nuevo", descripcion:"Permitirá crear rangos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"usuario.nuevo", descripcion:"Permitirá crear usuarios." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"ficha.nuevo", descripcion:"Permitirá crear fichas." }));
 
-    await AccionesDataWorker.newAccion({nombre:"accion.nuevo", descripcion:"Permitirá crear acciones." });
-    await AccionesDataWorker.newAccion({nombre:"permiso.nuevo", descripcion:"Permitirá crear permisos." });
-    await AccionesDataWorker.newAccion({nombre:"rango.nuevo", descripcion:"Permitirá crear rangos." });
-    await AccionesDataWorker.newAccion({nombre:"usuario.nuevo", descripcion:"Permitirá crear usuarios." });
-    await AccionesDataWorker.newAccion({nombre:"ficha.nuevo", descripcion:"Permitirá crear fichas." });
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"accion.editar", descripcion:"Permitirá editar acciones." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"permiso.editar", descripcion:"Permitirá editar permisos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"rango.editar", descripcion:"Permitirá editar rangos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"usuario.editar", descripcion:"Permitirá editar usuarios." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"ficha.editar", descripcion:"Permitirá editar fichas." }));
 
-    await AccionesDataWorker.newAccion({nombre:"accion.editar", descripcion:"Permitirá editar acciones." });
-    await AccionesDataWorker.newAccion({nombre:"permiso.editar", descripcion:"Permitirá editar permisos." });
-    await AccionesDataWorker.newAccion({nombre:"rango.editar", descripcion:"Permitirá editar rangos." });
-    await AccionesDataWorker.newAccion({nombre:"usuario.editar", descripcion:"Permitirá editar usuarios." });
-    await AccionesDataWorker.newAccion({nombre:"ficha.editar", descripcion:"Permitirá editar fichas." });
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"accion.obtener", descripcion:"Permitirá obtener acciones." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"permiso.obtener", descripcion:"Permitirá obtener permisos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"rango.obtener", descripcion:"Permitirá obtener rangos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"usuario.obtener", descripcion:"Permitirá obtener usuarios." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"ficha.obtener", descripcion:"Permitirá editaobtener fichas." }));
 
-    await AccionesDataWorker.newAccion({nombre:"accion.obtener", descripcion:"Permitirá obtener acciones." });
-    await AccionesDataWorker.newAccion({nombre:"permiso.obtener", descripcion:"Permitirá obtener permisos." });
-    await AccionesDataWorker.newAccion({nombre:"rango.obtener", descripcion:"Permitirá obtener rangos." });
-    await AccionesDataWorker.newAccion({nombre:"usuario.obtener", descripcion:"Permitirá obtener usuarios." });
-    await AccionesDataWorker.newAccion({nombre:"ficha.obtener", descripcion:"Permitirá editaobtener fichas." });
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"accion.obtener.id", descripcion:"Permitirá obtener acciones específicas." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"permiso.obtener.id", descripcion:"Permitirá obtener permisos específicos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"rango.obtener.id", descripcion:"Permitirá obtener rangos específicos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"usuario.obtener.id", descripcion:"Permitirá obtener usuarios específicos." }));
+    allActions.push(await AccionesDataWorker.newAccion({nombre:"ficha.obtener.id", descripcion:"Permitirá editaobtener fichas específicos." }));
 
-    await AccionesDataWorker.newAccion({nombre:"accion.obtener.id", descripcion:"Permitirá obtener acciones específicas." });
-    await AccionesDataWorker.newAccion({nombre:"permiso.obtener.id", descripcion:"Permitirá obtener permisos específicos." });
-    await AccionesDataWorker.newAccion({nombre:"rango.obtener.id", descripcion:"Permitirá obtener rangos específicos." });
-    await AccionesDataWorker.newAccion({nombre:"usuario.obtener.id", descripcion:"Permitirá obtener usuarios específicos." });
-    await AccionesDataWorker.newAccion({nombre:"ficha.obtener.id", descripcion:"Permitirá editaobtener fichas específicos." });
 
+    let chiefPermisos = await PermisosDataWorker.newPermisos({
+        rango:Chief,
+        acciones: allActions
+    });
+
+    console.log(chiefPermisos);
 
     await UsuarioDataWorker.newUsuario({nombre_usuario:"Wall", clave:"154300922", nombre: "Steve", apellido:"Blair", rango: Chief._id});
 
