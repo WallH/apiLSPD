@@ -31,7 +31,8 @@ exports.getByID = async(id)=>
 
 exports.getAll = async()=>
 {
-    return await PermisosEndpointRepository.find();
+    return await PermisosEndpointRepository.find()
+    .populate({path: "acciones"});
 }
 
 exports.getByFilter = async(filter)=>
