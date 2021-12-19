@@ -21,7 +21,7 @@ exports.getByID = async(id)=>
     return await UsuarioRepository.findById(id).populate({
         path:'rango',
         model: RangoRepository
-    });
+    }).select('-clave');
 }
 
 exports.getAll = async()=>
@@ -29,12 +29,12 @@ exports.getAll = async()=>
     return await UsuarioRepository.find().populate({
         path: 'rango',
         model: RangoRepository
-    });
+    }).select('-clave');
 }
 
 exports.getByFilter = async(filter)=>
 {
-    return await UsuarioRepository.find(filter);
+    return await UsuarioRepository.find(filter).select('-clave');
 }
 
 exports.newUsuario = async(data)=>
