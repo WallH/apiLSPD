@@ -18,6 +18,11 @@ exports.getByFilter = async(req, res)=>
 
 exports.post = async(req, res)=>
 {
+    if(UsuarioDataWorker.existsNombreUsuario(req.body.nombre_usuario))
+    {
+        res.status(401).send({error: "Nombre de usuario ya existe."});
+    }
+    req.body.activo = true;
     let x= await UsuarioDataWorker.newUsuario(req.body);
     res.send({response: x});
 }

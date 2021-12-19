@@ -7,7 +7,12 @@ exports.loginAccount = async(req, res)=>
     var cuentaLogin = (await UsuarioDataWorker.getByNombreUsuario(req.body.usuario))[0] ?? null;
     if(cuentaLogin == null) 
     {
-        res.status(404).send({reason: "Cuenta inexistente"});
+        res.status(404).send({reason: "Cuenta inexistente."});
+        return;
+    }
+    if(!cuentaLogin.activo)
+    {
+        res.status(404).send({reason: "Cuenta inhabilitada."});
         return;
     }
     if(await EncryptDataWorker.verifyPassword(req.body.clave, cuentaLogin.clave)) 

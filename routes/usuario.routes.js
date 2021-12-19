@@ -9,7 +9,7 @@ module.exports = app =>
 {
     var router = require("express").Router();
     router.get("/", AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan('usuario.obtener'), UsuarioController.getAll); //AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan(['administrador', 'entrenador'])
-    router.get("/:id", AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan('usuario.obtener.id'), UsuarioController.getByIDParam);
+    router.get("/:id", /*AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan('usuario.obtener.id'),*/ UsuarioController.getByIDParam);
     router.post("/filter/", AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan('usuario.buscar'), UsuarioController.getByFilter);
     router.post("/", /*UsuarioValidator.newUsuarioValidation(), Validator.validate,*/ AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan('usuario.nuevo'), UsuarioController.post);
     router.put("/:id", AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan('usuario.editar'), /*UsuarioValidator.editUsuarioValidation(), Validator.validate,*/ UsuarioController.put);
