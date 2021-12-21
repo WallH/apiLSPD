@@ -2,6 +2,7 @@ const db = require("../models");
 const ValoracionOficialRepository = db.valoracionoficial;
 const UsuarioRepository = db.usuario;
 const RangoRepository = db.rango;
+const ComisariaRepository = db.comisaria;
 exports.getByID = async(id)=>
 {
     return await ValoracionOficialRepository.findById(id).populate('oficial')
@@ -20,14 +21,13 @@ exports.getAll = async()=>
         path:'oficial',
         model: UsuarioRepository,
         select: "-clave",
-        populate: [{path:'rango', model: RangoRepository},
-        ]
+        populate: [{path:'rango', model: RangoRepository},{path:'comisaria', model:ComisariaRepository}]
     })
     .populate({
         path:'encargado',
         model: UsuarioRepository,
         select: "-clave",
-        populate: [{path:'rango', model: RangoRepository}]
+        populate: [{path:'rango', model: RangoRepository}, {path:'comisaria', model:ComisariaRepository}]
     });
 /*    .populate('dieta')
     .populate({
