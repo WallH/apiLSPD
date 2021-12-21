@@ -43,11 +43,13 @@ exports.getByFilter = async(filter)=>
     return await ValoracionOficialRepository.find(filter).populate({
         path:'oficial',
         model: UsuarioRepository,
+        select: "-clave",
         populate: [{path:'rango', model: RangoRepository}]
     }).find(filter)
     .populate({
         path:'encargado',
         model: UsuarioRepository,
+        select: "-clave",
         populate: [{path:'rango', model: RangoRepository}]
     });
     /*.populate('dieta')
