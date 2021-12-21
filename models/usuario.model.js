@@ -10,7 +10,8 @@ module.exports = mongoose => {
                 nombre: { type: String, required: true },
                 apellido: { type: String, required: true },
                 rango: { type: Schema.Types.ObjectId },
-                activo: {type:Boolean, required: true}
+                activo: {type:Boolean, required: true},
+                comisaria: { type:Schema.Types.ObjectId }
             }
         )
     );

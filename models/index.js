@@ -6,6 +6,7 @@ const db = {};
 db.mongoose = mongoose;
 db.url = mongoURL;
 db.accion = require("./accion.model")(mongoose);
+db.comisaria = require("./comisaria.model")(mongoose);
 db.permisos = require("./permisos.model")(mongoose);
 db.permisosendpoint = require("./permisosendpoint.model")(mongoose);
 db.rango = require("./rango.model")(mongoose);

@@ -1,7 +1,7 @@
 const db = require("../models");
 const { encryptPassword } = require("./encrypt.dataworker");
 const UsuarioRepository = db.usuario;
-
+const ComisariaRepository = db.comisaria;
 const RangoRepository = db.rango;
 
 exports.getByNombreUsuario = async(nombre_usuario) =>
@@ -29,7 +29,9 @@ exports.getAll = async()=>
     return await UsuarioRepository.find().populate({
         path: 'rango',
         model: RangoRepository
-    }).select('-clave');
+    })
+    .populate({path:'comisaria', model: ComisariaRepository})
+    .select('-clave');
 }
 
 exports.getByFilter = async(filter)=>
