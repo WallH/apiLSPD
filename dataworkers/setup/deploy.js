@@ -4,10 +4,18 @@ const AccionesDataWorker = require("../acciones.dataworker");
 const PermisosDataWorker = require("../permisos.dataworker");
 const PermisosEndpointDataWorker = require("../permisosendpoint.dataworker");
 
-const installed = false;
+const installed = true;
 
 exports.installApp = async()=>
 {
+
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.obtener", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.obtener.id", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.buscar", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.nuevo", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.editar", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.eliminar", acciones: []});
+
     if(installed) return true;
     const cadete = await RangoDataWorker.newRango({"nombre": "Cadete", "poder": 0});
     const oficialI = await RangoDataWorker.newRango({"nombre": "Oficial I", "poder": 1});
