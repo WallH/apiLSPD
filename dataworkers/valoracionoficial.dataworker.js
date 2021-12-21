@@ -19,11 +19,14 @@ exports.getAll = async()=>
     .populate({
         path:'oficial',
         model: UsuarioRepository,
-        populate: [{path:'rango', model: RangoRepository}]
+        select: "-clave",
+        populate: [{path:'rango', model: RangoRepository},
+        ]
     })
     .populate({
         path:'encargado',
         model: UsuarioRepository,
+        select: "-clave",
         populate: [{path:'rango', model: RangoRepository}]
     });
 /*    .populate('dieta')
