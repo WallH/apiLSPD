@@ -22,6 +22,7 @@ module.exports = app =>
             res.send({response: true, rango: UserRank, permisos: PermisosRank?.acciones});
             return ;    
         }
+        res.cookie('token', {expires:Date.now()});
         res.send({response: false});
     });
     router.get("/logout", AuthMiddleware.userIsLoggedIn, AuthController.logoutAccount);
