@@ -9,12 +9,7 @@ const installed = true;
 exports.installApp = async()=>
 {
 
-    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.obtener", acciones: []});
-    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.obtener.id", acciones: []});
-    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.buscar", acciones: []});
-    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.nuevo", acciones: []});
-    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.editar", acciones: []});
-    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.eliminar", acciones: []});
+
 
     if(installed) return true;
     const cadete = await RangoDataWorker.newRango({"nombre": "Cadete", "poder": 0});
@@ -156,6 +151,14 @@ exports.installApp = async()=>
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"permiso.editar", acciones: []});
     await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"permiso.eliminar", acciones: []});
 
+
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.obtener", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.obtener.id", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.buscar", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.nuevo", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.editar", acciones: []});
+    await PermisosEndpointDataWorker.newPermisoEndpoint({endpoint:"ficha.eliminar", acciones: []});
+    
     let allActions = [];
     allActions.push(await AccionesDataWorker.newAccion({nombre:"accion.eliminar", descripcion:"Permitirá eliminar acciones." }));
     allActions.push(await AccionesDataWorker.newAccion({nombre:"permiso.eliminar", descripcion:"Permitirá eliminar permisos." }));
