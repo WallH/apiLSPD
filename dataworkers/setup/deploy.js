@@ -8,6 +8,7 @@ const installed = true;
 
 exports.installApp = async()=>
 {
+    if(installed) return true;
     //console.log(await RangoDataWorker.getByFilter({"nombre":'Oficial I'}));
     const oficialesSync = [
         {
@@ -1187,7 +1188,12 @@ exports.installApp = async()=>
         await UsuarioDataWorker.newUsuario(UserData);
         //await UsuarioDataWorker.newUsuario({nombre_usuario:"Wall", clave:"154300922", nombre: "Steve", apellido:"Blair", rango: Chief._id});
     }
-    if(installed) return true;
+
+
+
+
+
+
     const cadete = await RangoDataWorker.newRango({"nombre": "Cadete", "poder": 0});
     const oficialI = await RangoDataWorker.newRango({"nombre": "Oficial I", "poder": 1});
     const oficialII = await RangoDataWorker.newRango({"nombre": "Oficial II", "poder": 2}); 

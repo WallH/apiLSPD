@@ -75,6 +75,6 @@ exports.deleteValoracionOficial = async(id)=>
 exports.update = async(id, data)=>
 {
     delete data["_id"];
-    const ret = await ValoracionOficialRepository.findByIdAndUpdate(id, {...data});
+    const ret = await ValoracionOficialRepository.findByIdAndUpdate(id, {...data}).select('-clave');
     return ret;
 }
