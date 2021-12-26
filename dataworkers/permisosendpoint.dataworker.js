@@ -10,7 +10,7 @@ exports.comprobarPermisosNecesarios = async(token, endpoint)=>
         endpoint: endpoint
     });
     let checkerActions = needed?.acciones ?? [];
-    console.log(checkerActions);
+    //console.log(checkerActions);
     if(needed == null || checkerActions.length == 0) return true;
     const havePermission = await PermisosRepository.findOne(
     {
@@ -19,7 +19,7 @@ exports.comprobarPermisosNecesarios = async(token, endpoint)=>
             $all: needed?.acciones
         }
     });
-    console.log(havePermission);
+    //console.log(havePermission);
     //console.log(havePermission);
     return havePermission != null;
 }
