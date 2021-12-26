@@ -8,12 +8,14 @@ const installed = true;
 
 exports.installApp = async()=>
 {
+
+    if(installed) return true;
+    
     const obtenerTodosUsuarios = await UsuarioDataWorker.getAll(); 
     for(let thisUser of obtenerTodosUsuarios)
     {
       await UsuarioDataWorker.update(thisUser._id, { "nombre_usuario": thisUser.nombre + thisUser.apellido});
     }
-    if(installed) return true;
     //console.log(await RangoDataWorker.getByFilter({"nombre":'Oficial I'}));
     const oficialesSync = [
         {
