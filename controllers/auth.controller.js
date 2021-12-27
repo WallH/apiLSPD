@@ -35,7 +35,9 @@ exports.loginAccount = async(req, res)=>
             token: token,
             //rol: cuentaLogin.rol,
             nombre: cuentaLogin.nombre,
-            apellido: cuentaLogin.apellido
+            apellido: cuentaLogin.apellido,
+            rango: cuentaLogin.rango
+            
         }
         );
         return;

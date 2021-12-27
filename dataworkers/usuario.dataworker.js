@@ -8,11 +8,14 @@ exports.getByNombreUsuario = async(nombre_usuario) =>
 {
     return await UsuarioRepository.find({
         'nombre_usuario': nombre_usuario
-    });
+    }).populate({path:'rango', model:RangoRepository });
 }
 
 exports.existsNombreUsuario = async(nombre_usuario)=>
 {
+/*    console.log(nombre_usuario);
+    let retUser = (await this.getByNombreUsuario(nombre_usuario))[0];
+    console.log(retUser);*/
     return ((await this.getByNombreUsuario(nombre_usuario))[0] ?? null) != null;
 }
 
@@ -61,6 +64,6 @@ exports.update = async(id, data)=>
     delete data["_id"];
     if(data.clave?.trim() == "") delete data["clave"];
     if(data.clave !== undefined) data.clave = encryptPassword(data.clave);
-    const ret = await UsuarioRepository.findByIdAndUpdate(id, {...data});
+    const ret = await UsuarioRepository.findByIdAndUpdate(id, {...data}).select('-clave');
     return ret;
 }
