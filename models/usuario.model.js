@@ -11,7 +11,8 @@ module.exports = mongoose => {
                 apellido: { type: String, required: true },
                 rango: { type: Schema.Types.ObjectId },
                 activo: {type:Boolean, required: true},
-                comisaria: { type:Schema.Types.ObjectId }
+                comisaria: { type:Schema.Types.ObjectId },
+                ptb: {type:Boolean}
             }
         )
     );
