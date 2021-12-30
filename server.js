@@ -45,6 +45,7 @@ require("./routes/rango.routes")(app);
 require("./routes/usuario.routes")(app);
 require("./routes/valoracionoficial.routes")(app);
 require("./routes/auth.routes")(app);
+require("./routes/ptb/fichaptb.routes")(app);
 const PORT = 8081;
 
 app.listen(PORT, () => {

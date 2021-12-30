@@ -7,7 +7,13 @@ const PermisosEndpointDataWorker = require("../permisosendpoint.dataworker");
 const installed = true;
 
 exports.installApp = async()=>
-{
+{   
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.eliminar", descripcion:"Permitirá eliminar fichas ptb." });    
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.nuevo", descripcion:"Permitirá crear fichas ptb." });    
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.editar", descripcion:"Permitirá editar fichas ptb." });    
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.obtener", descripcion:"Permitirá obtener fichas ptb." });   
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.obtener.id", descripcion:"Permitirá obtener fichas ptb específicas." });
+
 
     if(installed) return true;
     

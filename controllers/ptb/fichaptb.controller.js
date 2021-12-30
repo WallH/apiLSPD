@@ -44,7 +44,8 @@ exports.post = async(req, res)=>
         res.status(401).send({error: "No tienes permisos suficientes."})
         return ;
     }
-    let x = await FichaPTBDataWorker.newValoracionOficial(req.body);
+    req.body.rangodurante = officerEvaluated.rango.nombre;
+    let x = await FichaPTBDataWorker.new(req.body);
     res.send({response: x});
 }
 
@@ -59,6 +60,6 @@ exports.put = async(req, res)=>
 exports.delete = async(req, res)=>
 {
     const id = req.params.id;
-    let x = await FichaPTBDataWorker.deleteValoracionOficial(id);
+    let x = await FichaPTBDataWorker.delete(id);
     res.send({response: x});
 }
