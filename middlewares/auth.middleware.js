@@ -32,3 +32,15 @@ exports.userIsWall = async(req,res, next)=>
     }
     res.status(401).send({error: "Sin permisos"});
 }
+
+
+exports.userIsPTB = async(req, res, next)=>
+{
+    const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
+    if(userLoggedIn?.ptb == false) 
+    {
+        next();
+        return;
+    }
+    res.status(401).send({error: "Sin permisos"});
+}
