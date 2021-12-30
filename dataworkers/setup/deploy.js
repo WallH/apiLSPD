@@ -8,11 +8,6 @@ const installed = true;
 
 exports.installApp = async()=>
 {   
-    await AccionesDataWorker.newAccion({nombre:"fichaptb.eliminar", descripcion:"Permitirá eliminar fichas ptb." });    
-    await AccionesDataWorker.newAccion({nombre:"fichaptb.nuevo", descripcion:"Permitirá crear fichas ptb." });    
-    await AccionesDataWorker.newAccion({nombre:"fichaptb.editar", descripcion:"Permitirá editar fichas ptb." });    
-    await AccionesDataWorker.newAccion({nombre:"fichaptb.obtener", descripcion:"Permitirá obtener fichas ptb." });   
-    await AccionesDataWorker.newAccion({nombre:"fichaptb.obtener.id", descripcion:"Permitirá obtener fichas ptb específicas." });
 
 
     if(installed) return true;
@@ -1384,6 +1379,13 @@ exports.installApp = async()=>
     allActions.push(await AccionesDataWorker.newAccion({nombre:"rango.obtener.id", descripcion:"Permitirá obtener rangos específicos." }));
     allActions.push(await AccionesDataWorker.newAccion({nombre:"usuario.obtener.id", descripcion:"Permitirá obtener usuarios específicos." }));
     allActions.push(await AccionesDataWorker.newAccion({nombre:"ficha.obtener.id", descripcion:"Permitirá editaobtener fichas específicos." }));
+
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.eliminar", descripcion:"Permitirá eliminar fichas ptb." });    
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.nuevo", descripcion:"Permitirá crear fichas ptb." });    
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.editar", descripcion:"Permitirá editar fichas ptb." });    
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.obtener", descripcion:"Permitirá obtener fichas ptb." });   
+    await AccionesDataWorker.newAccion({nombre:"fichaptb.obtener.id", descripcion:"Permitirá obtener fichas ptb específicas." });
+
 
 
     let chiefPermisos = await PermisosDataWorker.newPermisos({
