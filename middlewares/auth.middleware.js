@@ -37,7 +37,7 @@ exports.userIsWall = async(req,res, next)=>
 exports.userIsPTB = async(req, res, next)=>
 {
     const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
-    if(userLoggedIn?.ptb == false) 
+    if(userLoggedIn?.ptb == true) 
     {
         next();
         return;
