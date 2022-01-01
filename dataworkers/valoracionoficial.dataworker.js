@@ -56,6 +56,17 @@ exports.getByFilter = async(filter)=>
     .populate('rutina');*/
 }
 
+exports.getByFilterWithoutSupervisor = async(filter) =>
+{
+    return await ValoracionOficialRepository.find(filter).populate({
+        path:'oficial',
+        model: UsuarioRepository,
+        select: "-clave",
+        populate: [{path:'rango', model: RangoRepository}]
+    })
+    .select('-encargado -observacion');
+}
+
 exports.newValoracionOficial = async(data)=>
 {
     const ret = new ValoracionOficialRepository(

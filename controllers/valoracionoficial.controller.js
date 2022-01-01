@@ -10,6 +10,15 @@ exports.getMy = async(req, res)=>{
     res.send({response: await ValoracionOficialDataWorker.getByFilter(filter)});
 }
 
+exports.getMyPoints = async(req, res) =>{
+    const userLoggedIn = await TokenDataWorker.getUserByToken(req.cookies.token);
+    const filter = 
+    {
+        oficial: userLoggedIn
+    };
+    res.send({response: await ValoracionOficialDataWorker.getByFilterWithoutSupervisor(filter)});
+}
+
 exports.getAll = async(req, res)=>{
     res.send({response: await ValoracionOficialDataWorker.getAll()});
 }

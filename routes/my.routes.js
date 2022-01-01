@@ -6,6 +6,7 @@ const UsuarioController = require("../controllers/usuario.controller");
 module.exports = app =>
 {
     var router = require("express").Router();
+    router.get("/stats", AuthMiddleware.userIsLoggedIn, ValoracionOficialController.getMyPoints);
     router.get("/ficha", AuthMiddleware.userIsLoggedIn, /*PermissionMiddleware.userCan(['alumno']),*/ ValoracionOficialController.getMy); //AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan(['alumno'])
     router.get("/fichaptb", AuthMiddleware.userIsLoggedIn, AuthMiddleware.userIsPTB, /*PermissionMiddleware.userCan(['alumno']),*/ FichaPTBController.getMy); //AuthMiddleware.userIsLoggedIn, PermissionMiddleware.userCan(['alumno'])
     router.put("/password", AuthMiddleware.userIsLoggedIn, UsuarioController.changePassword);
