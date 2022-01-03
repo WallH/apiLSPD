@@ -14,4 +14,7 @@ db.usuario = require("./usuario.model")(mongoose);
 db.valoracionoficial = require("./valoracionoficial.model")(mongoose);
 db.tokenlogin = require("./tokenlogin.model")(mongoose);
 db.fichaptb = require("./fichaptb.model")(mongoose);
+db.gradosancion = require("./gradosancion.model")(mongoose);
+db.sancion = require("./sancion.model")(mongoose);
+
 module.exports = db;
