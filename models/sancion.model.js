@@ -9,6 +9,8 @@ module.exports = mongoose => {
                 grado: {type:Schema.Types.ObjectId, required:true},
                 observacion: {type:String, required:true},
                 fecha: {type:Date, required:true},
+                anuladaporacumulacion: {type:Schema.Types.ObjectId},
+                acumuladas: [{type:Schema.Types.ObjectId, ref:'sancion'}],
                 fechaFin: {type:Date},
                 degrado: {type:Boolean}
             }

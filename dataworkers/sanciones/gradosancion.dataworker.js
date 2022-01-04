@@ -4,17 +4,20 @@ const GradoSancionRepository = db.gradosancion;
 
 exports.getByID = async(id)=>
 {
-    return await GradoSancionRepository.findById(id);
+    return await GradoSancionRepository.findById(id)
+    .populate({path:'acumulacion', model: GradoSancionRepository});
 }
 
 exports.getAll = async()=>
 {
-    return await GradoSancionRepository.find();
+    return await GradoSancionRepository.find()
+    .populate({path:'acumulacion', model: GradoSancionRepository});
 }
 
 exports.getByFilter = async(filter)=>
 {
-    return await GradoSancionRepository.find(filter);
+    return await GradoSancionRepository.find(filter)
+    .populate({path:'acumulacion', model: GradoSancionRepository});
 }
 
 exports.getByFilterWithoutSupervisor = async(filter) =>

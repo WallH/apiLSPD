@@ -5,7 +5,9 @@ module.exports = mongoose => {
         mongoose.Schema(
             {
                 nombre: {type:String, required: true},
-                dias: {type:Number, required: true}
+                dias: {type:Number, required: true},
+                acumulacion: {type:Schema.Types.ObjectId},
+                acumulacionCantidad: {type:Number}
             }
         )
     );

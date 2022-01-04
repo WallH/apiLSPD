@@ -2,7 +2,8 @@ const db = require("../../models");
 const SancionRepository = db.sancion;
 const GradoSancionRepository = db.gradosancion;
 const UsuarioRepository = db.usuario;
-
+const RangoRepository = db.rango;
+const ComisariaRepository = db.comisaria;
 exports.getByID = async(id)=>
 {
     return await SancionRepository.findById(id)
@@ -21,6 +22,13 @@ exports.getByID = async(id)=>
         model: UsuarioRepository,
         select: "-clave",
         populate: [{path:'rango', model: RangoRepository},{path:'comisaria', model:ComisariaRepository}]
+    })
+    .populate({
+        path:'anuladaporacumulacion',
+        model: SancionRepository
+    })
+    .populate({
+        path:'acumuladas'
     });
 
 }
