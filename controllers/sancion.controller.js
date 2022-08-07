@@ -65,6 +65,7 @@ exports.post = async(req, res)=>
 
     let gradoSancion = await GradoSancionDataWorker.getByID(req.body.grado._id);
     let fechaPiv = new Date(req.body.fecha);
+    req.body.rangodurante = officerEvaluated.rango?.nombre;
     //console.log(fechaPiv);
     fechaPiv.setDate(fechaPiv.getDate() + gradoSancion.dias);
     req.body.fechaFin = fechaPiv;
@@ -88,6 +89,7 @@ exports.post = async(req, res)=>
             oficial:officerEvaluated,
             supervisor: userLoggedIn,
             grado: gradoSancion.acumulacion,
+            rangodurante: officerEvaluated.rango?.nombre,
             observacion: `Acumulación de ${gradoSancion.acumulacionCantidad} sanciones de tipo ${gradoSancion.nombre}`,
             fecha: req.body.fecha,
             anuladaporacumulacion: null,
